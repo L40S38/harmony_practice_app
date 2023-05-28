@@ -12,16 +12,18 @@
     <div class="box" id="Buttons">
       <h2>step1. コードを選ぶ</h2>
       <p>練習したいコードを選んでください</p>
-      <div class="button-list" id="Beginner">
+      <div class="button-list-wrapper" id="Beginner">
         <h3>初心者向け</h3>
-        <a class="btn" id="MajorSelectButton" onclick="ready('Major');">メジャー</a>
-        <a class="btn" id="MinorSelectButton" onclick="ready('Minor');">マイナー</a>
+        <div class="button-list">
+          <a class="btn" id="MajorSelectButton" onclick="ready('Major');">メジャー</a>
+          <a class="btn" id="MinorSelectButton" onclick="ready('Minor');">マイナー</a>
+        </div>
       </div>
-      <div class="button-list" id="Intermediate">
+      <div class="button-list-wrapper" id="Intermediate">
         <h3>中級者向け</h3>
         <p>comming soon...</p>
       </div>
-      <div class="button-list" id="Advanced">
+      <div class="button-list-wrapper" id="Advanced">
         <h3>上級者向け</h3>
         <p>comming soon...</p>
       </div>

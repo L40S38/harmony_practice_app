@@ -10,18 +10,22 @@ body {
 h1 {
     text-align: center;
     font-size: 3rem;
+    background: #c2edff;/*背景色*/
+    padding: 0.5em;/*文字まわり（上下左右）の余白*/
 }
 
 h2 {
     font-size: 2rem;
+    border-bottom:1px solid #c2edff;
 }
 
 h3 {
     font-size: 1rem;
+    border-bottom:1px dotted #c2edff;
 }
 
 p {
-    font-size: 1rem;
+    font-size: 2em;
 }
 
 .box-top{
@@ -60,7 +64,7 @@ p {
 	/*vertical-align: middle;*/
 	text-decoration: none;
 	width: 100px;
-	margin: auto;
+	margin: 1rem;
 	padding: 1rem 4rem;
 	font-weight: bold;
 	color: #27acd9;
