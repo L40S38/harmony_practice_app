@@ -6,6 +6,13 @@ body {
     display: block;
     padding: auto;
 }
+a.home-link{
+    color:#333;
+    text-decoration: none;
+}
+a.home-link:hover{
+    text-decoration: underline;
+}
 
 h1 {
     text-align: center;
