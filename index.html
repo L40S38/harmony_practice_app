@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/@magenta/music@^1.9"></script>
+</head>
+<body> 
+  <div>
+    <h1>おうちでハーモニー練習</h1>
+        <!--53~65までをランダムにとってくる-->
+        <div id="Buttons">
+          <div id="Beginner">
+            <button id="MajorSelectButton" onclick="ready('Major');">メジャー</button>
+            <button id="MinorSelectButton" onclick="ready('Minor');">マイナー</button>
+          </div>
+          <div id="Intermediate">
+
+          </div>
+          <div id="Advanced">
+            
+          </div>
+        <div id="StartSection">
+          <div id="Major" hidden>
+            <p>メジャーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、長3度の音（ミ）の音を出してみましょう</p>
+            <!--<p>※イヤホン推奨です</p>-->
+            <button id="MajorStartButton" onclick="harmony('Major');">スタート！</button>
+            <p id="recordStatus" hidden>録音中</p>
+          </div>
+          <div id="Minor" hidden>
+            <p>マイナーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、短3度の音（ミ♭）の音を出してみましょう</p>
+            <!--<p>※イヤホン推奨です</p>-->
+            <button id="MinorStartButton" onclick="harmony('Minor');">スタート！</button>
+            <p id="recordStatus" hidden>録音中</p>
+          </div>
+        </div>  
+        <div id="check-answer" hidden>
+          <!--<canvas id="canvas"></canvas>
+          <svg id="svg"></svg>-->
+          <button onclick="answer()" >答えのハーモニーを再生</button>
+          <!--<canvas id="canvas_a" width="400" height="300"></canvas>-->
+          <div id="canvas_a"></div>
+          <!--<button onclick="playHarmonyAndRec()">録音した音とハーモニーを一緒に再生</button>-->
+        </div>
+  </div>
+  <script src="app.js"></script>
+</body>
