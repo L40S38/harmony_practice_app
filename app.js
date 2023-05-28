@@ -1,5 +1,5 @@
 const mm = window.mm;
-var preChordType = '';
+var ChordType = '';
 
   //2つの間のランダムな整数をとる
 
@@ -13,31 +13,38 @@ var preChordType = '';
   let viz_a;
   PianoHarmonyPracticePlayer = new mm.Player(false, {
     run: (note) => viz_a.redraw(note),
-    stop: () => {console.log('done');harmonyFinishedState();}
+    stop: () => {console.log('done');harmonyFinishedState('step3');}
   });
 
   NoPianoHarmonyPracticePlayer = new mm.Player(false, {
     run: (note) => {},
-    stop: () => {console.log('done');harmonyFinishedState();}
+    stop: () => {console.log('done');harmonyFinishedState('step2');}
   });
 
   let harmonySequence;
   let answerSequence;
+  let answerSingleSequence;
   let root;
 
+  var config;
+
+  const chordTypeList = new Array([
+    'Major','Minor'
+  ]);
+
   function ready(chordType){
-    if (preChordType!='')
-      document.getElementById(preChordType).setAttribute('hidden',true);
-    preChordType = chordType;
+    ChordType = chordType;
+    document.getElementById('startSection').removeAttribute('hidden');
     document.getElementById(chordType).removeAttribute('hidden');
+    document.getElementById('check-answer').setAttribute('hidden',true);
+    document.getElementById('Buttons').setAttribute('hidden',true);
   }
 
-  function harmony(chordType){
+  function harmony(){
     //console.log(document.getElementById('check-answer'));
-    console.log(chordType);
-    document.getElementById('check-answer').setAttribute('hidden',true);
+    console.log(ChordType);
     root = getRandomInt(53,65);
-    switch(chordType){
+    switch(ChordType){
       case 'Major':
         harmonySequence = {
           notes:[
@@ -54,6 +61,12 @@ var preChordType = '';
           ],
           totalTime:8
         };
+        answerSingleSequence = {
+          notes:[
+            {pitch: root+4, startTime: 0.0, endTime: 2.0}
+          ],
+          totalTime:2
+        }
         break;
       case 'Minor':
         harmonySequence = {
@@ -71,6 +84,12 @@ var preChordType = '';
           ],
           totalTime:8
         };
+        answerSingleSequence = {
+          notes:[
+            {pitch: root+3, startTime: 0.0, endTime: 2.0}
+          ],
+          totalTime:2
+        }
         break;
       default:
         break;
@@ -80,19 +99,28 @@ var preChordType = '';
     NoPianoHarmonyPracticePlayer.start(harmonySequence);
     
   }
-  
-  function harmonyFinishedState(){
+
+  function waterfallHide(){
+    var elements = document.getElementsByClassName('waterfall-notes-container');
+    console.log(elements);
+    for(var i=0; i<elements.length; i++)
+      elements[i].setAttribute('hidden',true);
+  }
+
+  function harmonyFinishedState(step){
+    if(step==="step2"){
+      document.getElementById("goToLastStep").disabled=false;
+    }
+  }
+
+  function checkAnswer(){
     try{
         document.getElementById('check-answer').removeAttribute('hidden');
-        var config = {
-          showOnlyOctavesUsed:true,
-          noteHeight:1000
+        document.getElementById('startSection').setAttribute('hidden',true);
+        config = {
         };
         viz_a = new mm.WaterfallSVGVisualizer(answerSequence, document.getElementById('canvas_a'),config);
-        var elements = document.getElementsByClassName('waterfall-notes-container');
-        console.log(elements);
-        for(var i=0; i<elements.length; i++)
-          elements[i].setAttribute('hidden',true);
+        waterfallHide();
     }catch(e){
         console.log(e);
     }
@@ -100,7 +128,15 @@ var preChordType = '';
   }
 
   function answer(){
+    viz_a = new mm.WaterfallSVGVisualizer(answerSequence, document.getElementById('canvas_a'),config);
+    waterfallHide();
     PianoHarmonyPracticePlayer.start(answerSequence);
+  }
+
+  function answerSingle(){
+    viz_a = new mm.WaterfallSVGVisualizer(answerSingleSequence, document.getElementById('canvas_a'),config);
+    waterfallHide();
+    PianoHarmonyPracticePlayer.start(answerSingleSequence);
   }
 
   function recordPlayer(){

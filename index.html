@@ -1,44 +1,62 @@
 <!DOCTYPE html>
 <head>
   <script src="https://cdn.jsdelivr.net/npm/@magenta/music@^1.9"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body> 
-  <div>
-    <h1>おうちでハーモニー練習</h1>
+  <div class="box-top">
+    <div class="title">
+      <h1>おうちでハーモニー練習</h1>
+    </div>
         <!--53~65までをランダムにとってくる-->
-        <div id="Buttons">
-          <div id="Beginner">
-            <button id="MajorSelectButton" onclick="ready('Major');">メジャー</button>
-            <button id="MinorSelectButton" onclick="ready('Minor');">マイナー</button>
-          </div>
-          <div id="Intermediate">
+    <div class="box" id="Buttons">
+      <h2>step1. コードを選ぶ</h2>
+      <p>練習したいコードを選んでください</p>
+      <div class="button-list" id="Beginner">
+        <h3>初心者向け</h3>
+        <a class="btn" id="MajorSelectButton" onclick="ready('Major');">メジャー</a>
+        <a class="btn" id="MinorSelectButton" onclick="ready('Minor');">マイナー</a>
+      </div>
+      <div class="button-list" id="Intermediate">
+        <h3>中級者向け</h3>
+        <p>comming soon...</p>
+      </div>
+      <div class="button-list" id="Advanced">
+        <h3>上級者向け</h3>
+        <p>comming soon...</p>
+      </div>
+    </div>  
 
-          </div>
-          <div id="Advanced">
-            
-          </div>
-        <div id="StartSection">
-          <div id="Major" hidden>
-            <p>メジャーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、長3度の音（ミ）の音を出してみましょう</p>
+    <div class="box" id="startSection" hidden>
+      <h2>step2. ハーモニーの音を聞いて音を出してみる</h2>
+      <div id="Major" hidden>
+        <p>メジャーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、長3度の音（ミ）の音を出してみましょう</p>
             <!--<p>※イヤホン推奨です</p>-->
-            <button id="MajorStartButton" onclick="harmony('Major');">スタート！</button>
-            <p id="recordStatus" hidden>録音中</p>
-          </div>
-          <div id="Minor" hidden>
-            <p>マイナーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、短3度の音（ミ♭）の音を出してみましょう</p>
+      </div>
+      <div id="Minor" hidden>
+        <p>マイナーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、短3度の音（ミ♭）の音を出してみましょう</p>
             <!--<p>※イヤホン推奨です</p>-->
-            <button id="MinorStartButton" onclick="harmony('Minor');">スタート！</button>
-            <p id="recordStatus" hidden>録音中</p>
-          </div>
-        </div>  
-        <div id="check-answer" hidden>
+      </div>
+      <div class="button-list">
+        <a class="btn" id="MajorStartButton" onclick="harmony();">スタート！</a>
+        <input class="btn" id="goToLastStep" onclick="checkAnswer()" disabled value="次へ">
+      </div>
+    </div>  
+        
+    
+    <div class="box" id="check-answer" hidden>
           <!--<canvas id="canvas"></canvas>
           <svg id="svg"></svg>-->
-          <button onclick="answer()" >答えのハーモニーを再生</button>
+      <h2>step3. 正解の音を確認</h2>
+      <p>正解のハーモニーを再生して、自分の声と聞き比べてみましょう</p>
+      <div class="button-list">
+        <a class="btn" onclick="answer()">ハーモニーを再生</a>
+        <a class="btn" onclick="answerSingle()">正解の音だけを確認</a>
+      </div>
           <!--<canvas id="canvas_a" width="400" height="300"></canvas>-->
-          <div id="canvas_a"></div>
+      <div id="canvas_a"></div>
           <!--<button onclick="playHarmonyAndRec()">録音した音とハーモニーを一緒に再生</button>-->
-        </div>
+    </div>
   </div>
   <script src="app.js"></script>
 </body>
