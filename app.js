@@ -36,7 +36,7 @@ var ChordType = '';
     ChordType = chordType;
     document.getElementById('startSection').removeAttribute('hidden');
     document.getElementById(chordType).removeAttribute('hidden');
-    document.getElementById('check-answer').setAttribute('hidden',true);
+    document.getElementById('checkAnswerSection').setAttribute('hidden',true);
     document.getElementById('Buttons').setAttribute('hidden',true);
   }
 
@@ -109,16 +109,22 @@ var ChordType = '';
 
   function harmonyFinishedState(step){
     if(step==="step2"){
-      document.getElementById("goToLastStep").disabled=false;
+      console.log(document.getElementById("goToLastStep").classList);
+      document.getElementById("goToLastStep").classList.remove('disabled');
     }
   }
 
+
+
   function checkAnswer(){
+    var classList = document.getElementById('goToLastStep').classList;
+    for(var i=0;i<classList.length;i++){
+      if(classList[i]=='disabled')return;
+    }
     try{
-        document.getElementById('check-answer').removeAttribute('hidden');
+        document.getElementById('checkAnswerSection').removeAttribute('hidden');
         document.getElementById('startSection').setAttribute('hidden',true);
         config = {
-          noteRGB
         };
         viz_a = new mm.WaterfallSVGVisualizer(answerSequence, document.getElementById('canvas_a'),config);
         waterfallHide();

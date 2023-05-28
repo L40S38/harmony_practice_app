@@ -1,5 +1,5 @@
 body {
-    background-color: #AFDFE4;
+    background-color: #27acd9;
 }
 
 .title {
@@ -16,30 +16,33 @@ a.home-link:hover{
 
 h1 {
     text-align: center;
-    font-size: 3rem;
+    font-size: 4rem;
     background: #c2edff;/*背景色*/
     padding: 0.5em;/*文字まわり（上下左右）の余白*/
 }
 
 h2 {
-    font-size: 2rem;
-    border-bottom:1px solid #c2edff;
+    text-align: left;
+    font-size: 3em;
+    border-bottom:5px solid #27acd9;
+    padding: 0 0.5em;/*文字まわり（上下左右）の余白*/
 }
 
 h3 {
-    font-size: 1rem;
-    border-bottom:1px dotted #c2edff;
+    text-align: center;
+    font-size: 2rem;
+    border-bottom:5px dotted #27acd9;
 }
 
 p {
-    font-size: 2em;
+    font-size: 2rem;
 }
 
 .box-top{
     background-color: white;
     max-width: 90%;
-    margin: 0 auto;
-    border: 2px solid #2589d0;
+    margin: 3rem auto;
+    /*border: 2px solid #2589d0;*/
     border-radius: 3px;
     overflow: hidden;
     padding: 100px auto;
@@ -49,7 +52,6 @@ p {
     max-width: 90%;
     margin: 0 auto;
     /*border: 2px solid #2589d0;*/
-    border-radius: 3px;
     overflow: hidden;
     padding: auto;
 }
@@ -58,6 +60,10 @@ p {
     margin: 0;
     padding: 1em 1.5em;
     color: #333;
+}
+
+.button-list-wrapper{
+    margin: 1rem auto;
 }
 
 .button-list {
@@ -70,13 +76,15 @@ p {
 	text-align: center;
 	/*vertical-align: middle;*/
 	text-decoration: none;
-	width: 100px;
-	margin: 1rem;
+	min-width: 25%;
+	margin: 1rem auto;
 	padding: 1rem 4rem;
 	font-weight: bold;
+    font-size: 1.5rem;
 	color: #27acd9;
 	border-bottom: 2px solid #27acd9;
 	border-radius: 100vh;
+    border-width: 1px;
 	box-shadow: 0 2px 7px rgba(0, 0, 0, .3);
 	-webkit-box-shadow: 0 2px 7px rgba(0, 0, 0, .3);
 	transition: 0.5s;
@@ -87,22 +95,14 @@ p {
 	border-bottom: 2px solid #fff;
 	transform: translateY(3px);
 }
-.btn:disabled {
-    display: block;
-	text-align: center;
-	/*vertical-align: middle;*/
-	text-decoration: none;
-	width: 100px;
-	margin: auto;
-	padding: 1rem 4rem;
-	font-weight: bold;
+.btn.disabled {
 	color: #ccc;
 	border-bottom: 2px solid #ccc;
-	border-radius: 100vh;
-	box-shadow: 0 2px 7px rgba(0, 0, 0, .3);
-	-webkit-box-shadow: 0 2px 7px rgba(0, 0, 0, .3);
-	transition: 0.5s;
 }
 svg rect.active {
-    color:#27acd9;
+    fill:#27acd9;
+    transition: 0.5s;
+}
+#canvas_a {
+    margin:3rem auto;
 }

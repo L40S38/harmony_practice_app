@@ -41,16 +41,16 @@
       </div>
       <div class="button-list">
         <a class="btn" id="MajorStartButton" onclick="harmony();">スタート！</a>
-        <input class="btn" id="goToLastStep" onclick="checkAnswer()" disabled value="次へ">
+        <a class="btn disabled" id="goToLastStep" onclick="checkAnswer()">次へ</a>
       </div>
     </div>  
         
     
-    <div class="box" id="check-answer" hidden>
+    <div class="box" id="checkAnswerSection" hidden>
           <!--<canvas id="canvas"></canvas>
           <svg id="svg"></svg>-->
       <h2>step3. 正解の音を確認</h2>
-      <p>正解のハーモニーを再生して、自分の声と聞き比べてみましょう</p>
+      <p>正解のハーモニーを再生して、正しい音が出せていたか確認しましょう</p>
       <div class="button-list">
         <a class="btn" onclick="answer()">ハーモニーを再生</a>
         <a class="btn" onclick="answerSingle()">正解の音だけを確認</a>
