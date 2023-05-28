@@ -1,4 +1,5 @@
 const mm = window.mm;
+var preChordType = '';
 
   //2つの間のランダムな整数をとる
 
@@ -25,6 +26,9 @@ const mm = window.mm;
   let root;
 
   function ready(chordType){
+    if (preChordType!='')
+      document.getElementById(preChordType).setAttribute('hidden',true);
+    preChordType = chordType;
     document.getElementById(chordType).removeAttribute('hidden');
   }
 
