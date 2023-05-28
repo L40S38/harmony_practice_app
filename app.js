@@ -118,6 +118,7 @@ var ChordType = '';
         document.getElementById('check-answer').removeAttribute('hidden');
         document.getElementById('startSection').setAttribute('hidden',true);
         config = {
+          noteRGB
         };
         viz_a = new mm.WaterfallSVGVisualizer(answerSequence, document.getElementById('canvas_a'),config);
         waterfallHide();
