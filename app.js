@@ -117,7 +117,10 @@ var ChordType = '';
   function checkAnswer(){
     var classList = document.getElementById('goToLastStep').classList;
     for(var i=0;i<classList.length;i++){
-      if(classList[i]=='disabled')return;
+      if(classList[i]=='disabled'){
+        document.getElementById('caution').textContent = '音が鳴り終わるまで押さないでください'
+        return;
+      }
     }
     try{
         document.getElementById('checkAnswerSection').removeAttribute('hidden');

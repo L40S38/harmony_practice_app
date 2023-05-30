@@ -20,7 +20,7 @@
       <h2>step1. コードを選ぶ</h2>
       <p>練習したいコードを選んでください</p>
       <div class="button-list-wrapper" id="Beginner">
-        <h3>初心者向け</h3>
+        <h3 class="section-title">初心者向け</h3>
         <div class="button-list">
           <a class="btn beginner" onclick="ready('5step');">
             初めての人向け
@@ -32,24 +32,28 @@
         </div>
       </div>
       <div class="button-list-wrapper" id="Intermediate">
-        <h3>中級者向け</h3>
+        <h3 class="section-title">中級者向け</h3>
         <p>comming soon...</p>
       </div>
       <div class="button-list-wrapper" id="Advanced">
-        <h3>上級者向け</h3>
+        <h3 class="section-title">上級者向け</h3>
         <p>comming soon...</p>
       </div>
     </div>  
 
     <div class="box" id="startSection" hidden>
       <h2>step2. ハーモニーの音を聞いて音を出してみる</h2>
+      <p>自分の選んだコードに応じて音を出してみましょう</p>
       <div id="5step" hidden>
-        <p>ルートの音（ド）が鳴るので、完全5度の音（ソ）を出してみましょう</p>
         <div class="column">
-          <h3>完全5度とは?</h3>
+          <h3 class="section-title">完全5度とは?</h3>
           <p>全音3つ分と半音1つ（計：半音7つ）分の音の間隔のことです。多くのコードにルートの音と完全5度の音が使われています。</p>
           
           <p>参考：<a href="https://yurupiano.com/perfect5th/">【音程】図解でわかる！5度音程｜完全5度を解説</a></p>
+        </div>
+        <div class="column">
+          <h3 class="section-title">完全5度の音を出してみよう</h3>
+          <p>ルートの音（ド）が鳴るので、完全5度の音（ソ）を出してみましょう</p>
         </div>
             <!--<p>※イヤホン推奨です</p>-->
       </div>
@@ -63,7 +67,11 @@
       </div>
       <div class="button-list">
         <a class="btn" id="MajorStartButton" onclick="harmony();">スタート！</a>
-        <a class="btn disabled" id="goToLastStep" onclick="checkAnswer()">次へ</a>
+        <a class="btn disabled" id="goToLastStep" onclick="checkAnswer()">
+          次へ
+          <br>
+          <span id="caution"></span>
+        </a>
       </div>
     </div>  
         
@@ -81,10 +89,17 @@
       <div id="canvas_a"></div>
           <!--<button onclick="playHarmonyAndRec()">録音した音とハーモニーを一緒に再生</button>-->
     </div>
+    <footer>
+      <div class="footer title">
+        <a class="home-link" href="index.html">
+          <h3>
+            Harmony Alone
+          </h3>
+        </a>
+        <p>Built with <a href="https://magenta.tensorflow.org">magenta.js</a>.You can browse source code <a href="https://github.com/L40S38/harmony_practice_app">here</a>.</p>
+      </div>
+    </footer>
   </div>
-  <footer>
-    You can browse source code <a href="https://github.com/L40S38/harmony_practice_app">here</a>.
-  </footer>
   <script src="chordDataset.js"></script>
   <script src="app.js"></script>
 </body>
