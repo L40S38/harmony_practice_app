@@ -9,6 +9,20 @@ var ChordType = '';
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
   }
 
+  function chordToNotes(root,chordType,startTime,endTime){
+    /*
+    if(Pitch.indexOf(root)==-1){
+        throw (new Error('root invalid value'));
+    }else if(chordData.chordType){
+        throw (new Error('chordType invalid value'));
+    }*/
+    var sequence = mm.NoteSequence.create();
+    for(var i=0; i<chordData[chordType].length; i++){
+        sequence.notes.push({pitch: root+chordData[chordType][i], startTime: startTime+2.0*i, endTime: endTime});
+    }
+    sequence.totalTime = endTime;
+    return sequence;
+}
 
   let viz_a;
   PianoHarmonyPracticePlayer = new mm.Player(false, {
@@ -17,7 +31,7 @@ var ChordType = '';
   });
 
   NoPianoHarmonyPracticePlayer = new mm.Player(false, {
-    run: (note) => {},
+    run: (note) => {console.log(note)},
     stop: () => {console.log('done');harmonyFinishedState('step2');}
   });
 
@@ -29,7 +43,7 @@ var ChordType = '';
   var config;
 
   const chordTypeList = new Array([
-    'Major','Minor'
+    '5step','Major','Minor'
   ]);
 
   function ready(chordType){
@@ -45,27 +59,19 @@ var ChordType = '';
     console.log(ChordType);
     root = getRandomInt(53,65);
     switch(ChordType){
+      case '5step':
+        harmonySequence = chordToNotes(root, 'single', 0.0, 8.0);
+        answerSequence = chordToNotes(root, '5step', 0.0, 8.0);
+        answerSingleSequence = {
+          notes:[
+            {pitch: root+7, startTime: 0.0, endTime: 2.0}
+          ],
+          totalTime:2
+        }
+        break;
       case 'Major':
-        harmonySequence = {
-          notes:[
-              {pitch: root, startTime: 0.0, endTime: 8.0},
-              {pitch: root+7, startTime: 2.0, endTime: 8.0}
-          ],
-          totalTime:8
-        };
-        /*
-        answerSequence = {
-          notes:[
-              {pitch: root, startTime: 0.0, endTime: 8.0},
-              {pitch: root+7, startTime: 2.0, endTime: 8.0},
-              {pitch: root+4, startTime: 4.0, endTime: 8.0}
-          ],
-          totalTime:8
-        };*/
-        answerSequence = {
-          notes:chordToNotes(root, '', 0.0, 8.0),
-          totalTime:8
-        };
+        harmonySequence = chordToNotes(root, '5step', 0.0, 8.0);
+        answerSequence = chordToNotes(root, '', 0.0, 8.0);
         answerSingleSequence = {
           notes:[
             {pitch: root+4, startTime: 0.0, endTime: 2.0}
@@ -74,26 +80,8 @@ var ChordType = '';
         }
         break;
       case 'Minor':
-        harmonySequence = {
-          notes:[
-              {pitch: root, startTime: 0.0, endTime: 8.0},
-              {pitch: root+7, startTime: 2.0, endTime: 8.0}
-          ],
-          totalTime:8
-        };
-        answerSequence = {
-          notes:chordToNotes(root, 'm', 0.0, 8.0),
-          totalTime:8
-        };
-        /*
-        answerSequence = {
-          notes:[
-              {pitch: root, startTime: 0.0, endTime: 8.0},
-              {pitch: root+7, startTime: 2.0, endTime: 8.0},
-              {pitch: root+3, startTime: 4.0, endTime: 8.0}
-          ],
-          totalTime:8
-        };*/
+        harmonySequence = chordToNotes(root, '5step', 0.0, 8.0);
+        answerSequence = chordToNotes(root, 'm', 0.0, 8.0);
         answerSingleSequence = {
           notes:[
             {pitch: root+3, startTime: 0.0, endTime: 2.0}
@@ -105,7 +93,7 @@ var ChordType = '';
         break;
     }
     //viz_a = new mm.PianoRollCanvasVisualizer(answerSequence, document.getElementById('canvas_a'));
-
+    console.log(harmonySequence);
     NoPianoHarmonyPracticePlayer.start(harmonySequence);
     
   }
@@ -145,6 +133,7 @@ var ChordType = '';
   }
 
   function answer(){
+    console.log(answerSequence);
     viz_a = new mm.WaterfallSVGVisualizer(answerSequence, document.getElementById('canvas_a'),config);
     waterfallHide();
     PianoHarmonyPracticePlayer.start(answerSequence);

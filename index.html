@@ -22,8 +22,13 @@
       <div class="button-list-wrapper" id="Beginner">
         <h3>初心者向け</h3>
         <div class="button-list">
-          <a class="btn" id="MajorSelectButton" onclick="ready('Major');">メジャー</a>
-          <a class="btn" id="MinorSelectButton" onclick="ready('Minor');">マイナー</a>
+          <a class="btn beginner" onclick="ready('5step');">
+            初めての人向け
+            <br>
+            <span>まずは5度の音を出してみよう</span>
+          </a>
+          <a class="btn" onclick="ready('Major');">メジャー</a>
+          <a class="btn" onclick="ready('Minor');">マイナー</a>
         </div>
       </div>
       <div class="button-list-wrapper" id="Intermediate">
@@ -38,6 +43,10 @@
 
     <div class="box" id="startSection" hidden>
       <h2>step2. ハーモニーの音を聞いて音を出してみる</h2>
+      <div id="5step" hidden>
+        <p>ルートの音（ド）が鳴るので、完全5度の音（ソ）を出してみましょう</p>
+            <!--<p>※イヤホン推奨です</p>-->
+      </div>
       <div id="Major" hidden>
         <p>メジャーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、長3度の音（ミ）の音を出してみましょう</p>
             <!--<p>※イヤホン推奨です</p>-->

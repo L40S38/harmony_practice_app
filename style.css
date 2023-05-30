@@ -76,13 +76,16 @@ p {
     display: flex;
     flex-flow: wrap row;
 }
-
+.btn.beginner {
+    min-width: 60%;
+}
 .btn {
-	display: block;
-	text-align: center;
+	display: grid;
+    place-items: center;
 	/*vertical-align: middle;*/
 	text-decoration: none;
-	min-width: 200px;
+	min-width: 30%;
+    min-height: 60px;
 	margin: 1rem auto;
 	padding: 1rem 4rem;
 	font-weight: bold;
@@ -105,6 +108,12 @@ p {
 	color: #ccc;
 	border-bottom: 2px solid #ccc;
 }
+.btn span {
+    font-size: 1rem;
+    font-weight: lighter;
+}
+
+
 svg rect.active {
     fill:#27acd9;
     transition: 0.5s;
