@@ -53,12 +53,17 @@ var ChordType = '';
           ],
           totalTime:8
         };
+        /*
         answerSequence = {
           notes:[
               {pitch: root, startTime: 0.0, endTime: 8.0},
               {pitch: root+7, startTime: 2.0, endTime: 8.0},
               {pitch: root+4, startTime: 4.0, endTime: 8.0}
           ],
+          totalTime:8
+        };*/
+        answerSequence = {
+          notes:chordToNotes(root, '', 0.0, 8.0),
           totalTime:8
         };
         answerSingleSequence = {
@@ -77,13 +82,18 @@ var ChordType = '';
           totalTime:8
         };
         answerSequence = {
+          notes:chordToNotes(root, 'm', 0.0, 8.0),
+          totalTime:8
+        };
+        /*
+        answerSequence = {
           notes:[
               {pitch: root, startTime: 0.0, endTime: 8.0},
               {pitch: root+7, startTime: 2.0, endTime: 8.0},
               {pitch: root+3, startTime: 4.0, endTime: 8.0}
           ],
           totalTime:8
-        };
+        };*/
         answerSingleSequence = {
           notes:[
             {pitch: root+3, startTime: 0.0, endTime: 2.0}
