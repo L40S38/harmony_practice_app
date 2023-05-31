@@ -1,4 +1,7 @@
 const mm = window.mm;
+const startSectionTop = document.getElementById('startSection').getBoundingClientRect().top;
+const checkAnswerSectionTop = document.getElementById('checkAnswerSection').getBoundingClientRect().top;
+
 var ChordType = '';
 
 let harmonySequence;
@@ -38,16 +41,17 @@ PianoHarmonyPracticePlayer = new mm.Player(false, {
 		viz_a.redraw(note);
 		document.getElementById(pressedButtonId).classList.add('hovered');
 	},
-	stop: () => { 
-		console.log('done'); 
-		harmonyFinishedState('step3'); 
+	stop: () => {
+		console.log('done');
+		harmonyFinishedState('step3');
 	}
 });
 
 NoPianoHarmonyPracticePlayer = new mm.Player(false, {
 	run: (note) => {
 		//console.log(note)
-		document.getElementById('startButton').classList.add('hovered');
+		document.getElementById("startButton").classList.add('hovered');
+		document.getElementById("startButton").textContent = "再生中";
 	},
 	stop: () => {
 		console.log('done');
@@ -65,11 +69,15 @@ function ready(chordType) {
 	document.getElementById(chordType).removeAttribute('hidden');
 	document.getElementById('checkAnswerSection').setAttribute('hidden', true);
 	document.getElementById('selectSection').setAttribute('hidden', true);
+	window.scrollTo({
+		top: startSectionTop,
+		behavior: 'smooth'
+	});
 };
 
 function harmony() {
 	console.log(NoPianoHarmonyPracticePlayer.getPlayState());
-	if (NoPianoHarmonyPracticePlayer.getPlayState()=="started"){
+	if (NoPianoHarmonyPracticePlayer.getPlayState() == "started") {
 		NoPianoHarmonyPracticePlayer.stop();
 		return;
 	}
@@ -122,7 +130,7 @@ function harmony() {
 function waterfallHide() {
 	var elements = document.getElementsByClassName('waterfall-notes-container');
 	//console.log(elements);
-	for (var i = 0; i < elements.length; i++){
+	for (var i = 0; i < elements.length; i++) {
 		elements[i].setAttribute('hidden', true);
 	}
 };
@@ -133,7 +141,7 @@ function harmonyFinishedState(step) {
 		document.getElementById("startButton").textContent = "もう一度再生する";
 		document.getElementById("goToLastStep").classList.remove('disabled');
 		document.getElementById('startButton').classList.remove('hovered');
-	} elif (step == "step3") {
+	} else if(step == "step3") {
 		document.getElementById(pressedButtonId).classList.remove('hovered');
 	}
 };
@@ -158,12 +166,16 @@ function checkAnswer() {
 	} catch (e) {
 		console.log(e);
 	}
+	window.scrollTo({
+		top: checkAnswerSectionTop,
+		behavior: 'smooth'
+	});
 
 };
 
 function answer() {
 	console.log(PianoHarmonyPracticePlayer.getPlayState());
-	if(PianoHarmonyPracticePlayer.getPlayState()=="started"){
+	if (PianoHarmonyPracticePlayer.getPlayState() == "started") {
 		PianoHarmonyPracticePlayer.stop();
 	}
 	pressedButtonId = 'playAllNoteButton';
@@ -174,7 +186,7 @@ function answer() {
 
 function answerSingle() {
 	console.log(PianoHarmonyPracticePlayer.getPlayState());
-	if(PianoHarmonyPracticePlayer.getPlayState()=="started"){
+	if (PianoHarmonyPracticePlayer.getPlayState() == "started") {
 		PianoHarmonyPracticePlayer.stop();
 	}
 	pressedButtonId = 'playSingleNoteButton';
