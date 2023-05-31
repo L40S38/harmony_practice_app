@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <head>
+  <link rel="shortcut icon" href="favicon.ico">
   <script src="https://cdn.jsdelivr.net/npm/@magenta/music@^1.9"></script>
   <link rel="stylesheet" href="style.css">
-  <title>Harmony Alone</title>
+  <title>Harmonize Alone</title>
 </head>
 <body> 
   <div class="box-top">
     <div class="title">
       <a class="home-link" href="index.html">
         <h1>
-          Harmony Alone
+          Harmonize Alone
           <br>
           <span class="subtitle">~おうちでハーモニー練習~</span>
         </h1>
@@ -17,7 +18,7 @@
     </div>
         <!--53~65までをランダムにとってくる-->
     <div class="box" id="Buttons">
-      <h2>step1. コードを選ぶ</h2>
+      <h2 class="box-title">step1. コードを選ぶ</h2>
       <p>練習したいコードを選んでください</p>
       <div class="button-list-wrapper" id="Beginner">
         <h3 class="section-title">初心者向け</h3>
@@ -42,7 +43,7 @@
     </div>  
 
     <div class="box" id="startSection" hidden>
-      <h2>step2. ハーモニーの音を聞いて音を出してみる</h2>
+      <h2 class="box-title">step2. ハーモニーの音を聞いて音を出してみる</h2>
       <p>自分の選んだコードに応じて音を出してみましょう</p>
       <div id="5step" hidden>
         <div class="column">
@@ -58,11 +59,17 @@
             <!--<p>※イヤホン推奨です</p>-->
       </div>
       <div id="Major" hidden>
-        <p>メジャーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、長3度の音（ミ）の音を出してみましょう</p>
+        <div class="column">
+          <h3 class="section-title">メジャー</h3>
+          <p>メジャーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、長3度の音（ミ）の音を出してみましょう</p>
+        </div>
             <!--<p>※イヤホン推奨です</p>-->
       </div>
       <div id="Minor" hidden>
-        <p>マイナーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、短3度の音（ミ♭）の音を出してみましょう</p>
+        <div class="column">
+          <h3 class="section-title">マイナー</h3>
+          <<p>マイナーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、短3度の音（ミ♭）の音を出してみましょう</p>
+        </div>
             <!--<p>※イヤホン推奨です</p>-->
       </div>
       <div class="button-list">
@@ -79,7 +86,7 @@
     <div class="box" id="checkAnswerSection" hidden>
           <!--<canvas id="canvas"></canvas>
           <svg id="svg"></svg>-->
-      <h2>step3. 正解の音を確認</h2>
+      <h2 class="box-title">step3. 正解の音を確認</h2>
       <p>正解のコードを再生して、正しい音が出せていたか確認しましょう</p>
       <div class="button-list">
         <a class="btn" onclick="answer()">コード全ての音を再生</a>
@@ -93,7 +100,10 @@
       <div class="footer title">
         <a class="home-link" href="index.html">
           <h3>
-            Harmony Alone
+            <img class="logo" src="favicon.ico" alt="logo">
+            Harmonize Alone
+            <br>
+            <span>~おうちでハーモニー練習~</span>
           </h3>
         </a>
         <p>Built with <a href="https://magenta.tensorflow.org">magenta.js</a>.You can browse source code <a href="https://github.com/L40S38/harmony_practice_app">here</a>.</p>
