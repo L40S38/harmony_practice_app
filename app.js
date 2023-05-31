@@ -51,7 +51,7 @@ var ChordType = '';
     document.getElementById('startSection').removeAttribute('hidden');
     document.getElementById(chordType).removeAttribute('hidden');
     document.getElementById('checkAnswerSection').setAttribute('hidden',true);
-    document.getElementById('Buttons').setAttribute('hidden',true);
+    document.getElementById('selectSection').setAttribute('hidden',true);
   }
 
   function harmony(){
