@@ -112,7 +112,7 @@ p {
 	-webkit-box-shadow: 0 2px 7px rgba(0, 0, 0, .3);
 	transition: 0.5s;
 }
-.btn:hover {
+.btn:hover .btn.hovered{
 	color: #fff;
 	background: #27acd9;
 	border-bottom: 2px solid #fff;

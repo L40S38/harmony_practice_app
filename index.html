@@ -1,11 +1,13 @@
 <!DOCTYPE html>
+
 <head>
   <link rel="shortcut icon" href="favicon.ico">
   <script src="https://cdn.jsdelivr.net/npm/@magenta/music@^1.9"></script>
   <link rel="stylesheet" href="style.css">
   <title>Harmonize Alone</title>
 </head>
-<body> 
+
+<body>
   <div class="box-top">
     <div class="title">
       <a class="home-link" href="index.html">
@@ -16,7 +18,7 @@
         </h1>
       </a>
     </div>
-        <!--53~65までをランダムにとってくる-->
+    <!--53~65までをランダムにとってくる-->
     <div class="box" id="selectSection">
       <h2 class="box-title">step1. コードを選ぶ</h2>
       <p>練習したいコードを選んでください</p>
@@ -40,7 +42,7 @@
         <h3 class="section-title">上級者向け</h3>
         <p>comming soon...</p>
       </div>
-    </div>  
+    </div>
 
     <div class="box" id="startSection" hidden>
       <h2 class="box-title">step2. ハーモニーの音を聞いて音を出してみる</h2>
@@ -49,52 +51,52 @@
         <div class="column">
           <h3 class="section-title">完全5度とは?</h3>
           <p>全音3つ分と半音1つ（計：半音7つ）分の音の間隔のことです。多くのコードにルートの音と完全5度の音が使われています。</p>
-          
+
           <p>参考：<a href="https://yurupiano.com/perfect5th/">【音程】図解でわかる！5度音程｜完全5度を解説</a></p>
         </div>
         <div class="column">
           <h3 class="section-title">完全5度の音を出してみよう</h3>
           <p>ルートの音（ド）が鳴るので、完全5度の音（ソ）を出してみましょう</p>
         </div>
-            <!--<p>※イヤホン推奨です</p>-->
+        <!--<p>※イヤホン推奨です</p>-->
       </div>
       <div id="Major" hidden>
         <div class="column">
           <h3 class="section-title">メジャー</h3>
           <p>メジャーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、長3度の音（ミ）の音を出してみましょう</p>
         </div>
-            <!--<p>※イヤホン推奨です</p>-->
+        <!--<p>※イヤホン推奨です</p>-->
       </div>
       <div id="Minor" hidden>
         <div class="column">
           <h3 class="section-title">マイナー</h3>
           <<p>マイナーコードのルートの音（ド）と完全5度の音（ソ）が鳴るので、短3度の音（ミ♭）の音を出してみましょう</p>
         </div>
-            <!--<p>※イヤホン推奨です</p>-->
+        <!--<p>※イヤホン推奨です</p>-->
       </div>
       <div class="button-list">
-        <a class="btn" id="MajorStartButton" onclick="harmony();">スタート！</a>
+        <a class="btn" id="startButton" onclick="harmony();">スタート！</a>
         <a class="btn disabled" id="goToLastStep" onclick="checkAnswer()">
           次へ
           <br>
           <span id="caution"></span>
         </a>
       </div>
-    </div>  
-        
-    
+    </div>
+
+
     <div class="box" id="checkAnswerSection" hidden>
-          <!--<canvas id="canvas"></canvas>
+      <!--<canvas id="canvas"></canvas>
           <svg id="svg"></svg>-->
       <h2 class="box-title">step3. 正解の音を確認</h2>
       <p>正解のコードを再生して、正しい音が出せていたか確認しましょう</p>
       <div class="button-list">
-        <a class="btn" onclick="answer()">コード全ての音を再生</a>
-        <a class="btn" onclick="answerSingle()">正解の音だけを確認</a>
+        <a id="playAllNoteButton" class="btn" onclick="answer()">コード全ての音を再生</a>
+        <a id="playSingleNoteButton" class="btn" onclick="answerSingle()">正解の音だけを確認</a>
       </div>
-          <!--<canvas id="canvas_a" width="400" height="300"></canvas>-->
+      <!--<canvas id="canvas_a" width="400" height="300"></canvas>-->
       <div id="canvas_a"></div>
-          <!--<button onclick="playHarmonyAndRec()">録音した音とハーモニーを一緒に再生</button>-->
+      <!--<button onclick="playHarmonyAndRec()">録音した音とハーモニーを一緒に再生</button>-->
     </div>
     <footer>
       <div class="footer title">
@@ -106,7 +108,8 @@
             <span>~おうちでハーモニー練習~</span>
           </h3>
         </a>
-        <p>Built with <a href="https://magenta.tensorflow.org">magenta.js</a>.You can browse source code <a href="https://github.com/L40S38/harmony_practice_app">here</a>.</p>
+        <p>Built with <a href="https://magenta.tensorflow.org">magenta.js</a>.You can browse source code <a
+            href="https://github.com/L40S38/harmony_practice_app">here</a>.</p>
       </div>
     </footer>
   </div>
