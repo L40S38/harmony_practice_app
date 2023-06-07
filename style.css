@@ -111,7 +111,7 @@ p {
     cursor: pointer;
 }
 
-.btn.hover{
+.btn.hovered{
 	color: #fff;
 	background: #27acd9;
 	border-bottom: 2px solid #fff;

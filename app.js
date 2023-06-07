@@ -7,6 +7,7 @@ var ChordType = '';
 let harmonySequence;
 let answerSequence;
 let answerSingleSequence;
+let step5Sequence;
 let root = -1;
 
 var config;
@@ -34,6 +35,40 @@ function chordToNotes(root, chordType, startTime, endTime) {
 	sequence.totalTime = endTime;
 	return sequence;
 }
+
+function constructStep5Sequence(root, startTime){
+	step5Sequence = mm.NoteSequence.create({quantizationInfo: {stepsPerQuarter:4}, tempos: [{qpm:120}]});
+	//step5Sequence = mm.sequences.createQuantizedNoteSequence(stepsPerQuarter=4,qpm=120);
+	for (var i = 0; i < 13; i++) {
+		step5Sequence.notes.push(mm.NoteSequence.Note.create({ pitch: root + i, quantizedStartStep: startTime + 4.0 * i, quantizedEndStep: startTime + 4.0 * i + 1.0}));
+		step5Sequence.notes.push(mm.NoteSequence.Note.create({ pitch: root + i + 7, quantizedStartStep: startTime + 4.0 * i + 1.0, quantizedEndStep: startTime + 4.0 * i + 2.0}));
+		step5Sequence.notes.push(mm.NoteSequence.Note.create({ pitch: root + i, quantizedStartStep: startTime + 4.0 * i + 2.0, quantizedEndStep: startTime + 4.0 * i + 3.0}));
+	}
+	step5Sequence.totalQuantizedSteps = 4.0 * 14;
+	//step5Sequence = mm.sequences.unquantizeSequence(step5Sequence,120);
+	//step5Sequence.totalTime = 4.0 * 14;
+	console.log(step5Sequence);
+	newTempo = 40;
+	//step5Sequence.totalTime = Math.max(step5Sequence.totalTime,step5Sequence*120/newTempo);
+	console.log(step5Sequence);
+	//step5Player.setTempo(newTempo);
+	//console.log(step5Sequence);
+	//return sequence;
+}
+
+playStep5Button = document.getElementById("playStep5Button");
+
+step5Player = new mm.Player(false, {
+	run: (note) => {
+		playStep5Button.classList.add('hovered');
+		document.getElementById("playStep5Button").textContent = "停止";
+	},
+	stop: () => {
+		playStep5Button.classList.remove('hovered');
+		document.getElementById("playStep5Button").textContent = "再生";
+		console.log("done");
+	}
+});
 
 let viz_a;
 PianoHarmonyPracticePlayer = new mm.Player(false, {
@@ -69,6 +104,7 @@ function ready(chordType) {
 	document.getElementById(chordType).removeAttribute('hidden');
 	document.getElementById('checkAnswerSection').setAttribute('hidden', true);
 	document.getElementById('selectSection').setAttribute('hidden', true);
+	constructStep5Sequence(60,0.0);
 	window.scrollTo({
 		top: startSectionTop,
 		behavior: 'smooth'
@@ -77,7 +113,7 @@ function ready(chordType) {
 
 function harmony() {
 	console.log(NoPianoHarmonyPracticePlayer.getPlayState());
-	if (NoPianoHarmonyPracticePlayer.getPlayState() == "started") {
+	if (NoPianoHarmonyPracticePlayer.isPlaying()) {
 		NoPianoHarmonyPracticePlayer.stop();
 		return;
 	}
@@ -175,7 +211,7 @@ function checkAnswer() {
 
 function answer() {
 	console.log(PianoHarmonyPracticePlayer.getPlayState());
-	if (PianoHarmonyPracticePlayer.getPlayState() == "started") {
+	if (PianoHarmonyPracticePlayer.isPlaying()) {
 		PianoHarmonyPracticePlayer.stop();
 	}
 	pressedButtonId = 'playAllNoteButton';
@@ -186,7 +222,7 @@ function answer() {
 
 function answerSingle() {
 	console.log(PianoHarmonyPracticePlayer.getPlayState());
-	if (PianoHarmonyPracticePlayer.getPlayState() == "started") {
+	if (PianoHarmonyPracticePlayer.isPlaying()) {
 		PianoHarmonyPracticePlayer.stop();
 	}
 	pressedButtonId = 'playSingleNoteButton';
@@ -198,3 +234,13 @@ function answerSingle() {
 function recordPlayer() {
 	harmonyPracticePlayer.start(harmonySequence);
 };
+
+function step5() {
+	if(step5Player.isPlaying()){
+		//document.getElementById("playStep5Button").textContent = "再生";
+		step5Player.stop();
+	}else{
+		//constructStep5Sequence(60,0);
+		step5Player.start(step5Sequence,newTempo);
+	}
+}
