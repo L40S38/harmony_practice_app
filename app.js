@@ -36,13 +36,13 @@ function chordToNotes(root, chordType, startTime, endTime) {
 	return sequence;
 }
 
-function constructStep5Sequence(root, startTime){
-	step5Sequence = mm.NoteSequence.create({quantizationInfo: {stepsPerQuarter:4}, tempos: [{qpm:120}]});
+function constructStep5Sequence(root, startTime) {
+	step5Sequence = mm.NoteSequence.create({ quantizationInfo: { stepsPerQuarter: 4 }, tempos: [{ qpm: 120 }] });
 	//step5Sequence = mm.sequences.createQuantizedNoteSequence(stepsPerQuarter=4,qpm=120);
 	for (var i = 0; i < 13; i++) {
-		step5Sequence.notes.push(mm.NoteSequence.Note.create({ pitch: root + i, quantizedStartStep: startTime + 4.0 * i, quantizedEndStep: startTime + 4.0 * i + 1.0}));
-		step5Sequence.notes.push(mm.NoteSequence.Note.create({ pitch: root + i + 7, quantizedStartStep: startTime + 4.0 * i + 1.0, quantizedEndStep: startTime + 4.0 * i + 2.0}));
-		step5Sequence.notes.push(mm.NoteSequence.Note.create({ pitch: root + i, quantizedStartStep: startTime + 4.0 * i + 2.0, quantizedEndStep: startTime + 4.0 * i + 3.0}));
+		step5Sequence.notes.push(mm.NoteSequence.Note.create({ pitch: root + i, quantizedStartStep: startTime + 4.0 * i, quantizedEndStep: startTime + 4.0 * i + 1.0 }));
+		step5Sequence.notes.push(mm.NoteSequence.Note.create({ pitch: root + i + 7, quantizedStartStep: startTime + 4.0 * i + 1.0, quantizedEndStep: startTime + 4.0 * i + 2.0 }));
+		step5Sequence.notes.push(mm.NoteSequence.Note.create({ pitch: root + i, quantizedStartStep: startTime + 4.0 * i + 2.0, quantizedEndStep: startTime + 4.0 * i + 3.0 }));
 	}
 	step5Sequence.totalQuantizedSteps = 4.0 * 14;
 	//step5Sequence = mm.sequences.unquantizeSequence(step5Sequence,120);
@@ -104,7 +104,7 @@ function ready(chordType) {
 	document.getElementById(chordType).removeAttribute('hidden');
 	document.getElementById('checkAnswerSection').setAttribute('hidden', true);
 	document.getElementById('selectSection').setAttribute('hidden', true);
-	constructStep5Sequence(60,0.0);
+	constructStep5Sequence(60, 0.0);
 	window.scrollTo({
 		top: startSectionTop,
 		behavior: 'smooth'
@@ -177,7 +177,7 @@ function harmonyFinishedState(step) {
 		document.getElementById("startButton").textContent = "もう一度再生する";
 		document.getElementById("goToLastStep").classList.remove('disabled');
 		document.getElementById('startButton').classList.remove('hovered');
-	} else if(step == "step3") {
+	} else if (step == "step3") {
 		document.getElementById(pressedButtonId).classList.remove('hovered');
 	}
 };
@@ -236,11 +236,11 @@ function recordPlayer() {
 };
 
 function step5() {
-	if(step5Player.isPlaying()){
+	if (step5Player.isPlaying()) {
 		//document.getElementById("playStep5Button").textContent = "再生";
 		step5Player.stop();
-	}else{
+	} else {
 		//constructStep5Sequence(60,0);
-		step5Player.start(step5Sequence,newTempo);
+		step5Player.start(step5Sequence, newTempo);
 	}
 }
