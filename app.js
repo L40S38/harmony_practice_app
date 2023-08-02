@@ -154,7 +154,48 @@ function harmony() {
 				totalTime: 2
 			};
 			break;
+		case '7th':
+			harmonySequence = chordToNotes(root, '', 0.0, 8.0);
+			answerSequence = chordToNotes(root, '7', 0.0, 8.0);
+			answerSingleSequence = {
+				notes: [
+					{ pitch: root + 3, startTime: 0.0, endTime: 2.0 }
+				],
+				totalTime: 2
+			};
+			break;
+		case 'Major 7th':
+			harmonySequence = chordToNotes(root, '', 0.0, 8.0);
+			answerSequence = chordToNotes(root, 'M7', 0.0, 8.0);
+			answerSingleSequence = {
+				notes: [
+					{ pitch: root + 3, startTime: 0.0, endTime: 2.0 }
+				],
+				totalTime: 2
+			};
+			break;
+		case 'Minor 7th':
+			harmonySequence = chordToNotes(root, 'm', 0.0, 8.0);
+			answerSequence = chordToNotes(root, 'm7', 0.0, 8.0);
+			answerSingleSequence = {
+				notes: [
+					{ pitch: root + 3, startTime: 0.0, endTime: 2.0 }
+				],
+				totalTime: 2
+			};
+			break;
+		case 'Minor Major 7th':
+			harmonySequence = chordToNotes(root, 'm', 0.0, 8.0);
+			answerSequence = chordToNotes(root, 'mM7', 0.0, 8.0);
+			answerSingleSequence = {
+				notes: [
+					{ pitch: root + 3, startTime: 0.0, endTime: 2.0 }
+				],
+				totalTime: 2
+			};
+			break;
 		default:
+			console.log("undefined chord clicked");
 			break;
 	}
 	//viz_a = new mm.PianoRollCanvasVisualizer(answerSequence, document.getElementById('canvas_a'));
