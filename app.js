@@ -10,7 +10,7 @@ let answerSingleSequence;
 let step5Sequence;
 let root = -1;
 
-var config;
+var config = {};
 var pressedButtonId;
 
 //2つの間のランダムな整数をとる
@@ -54,6 +54,15 @@ function constructStep5Sequence(root, startTime) {
 	//step5Player.setTempo(newTempo);
 	//console.log(step5Sequence);
 	//return sequence;
+}
+
+function constructAnswerSequence(root, chordType, startTime, endTime) {
+	var delta = chordData[chordType][chordData[chordType].length-1];
+	console.log(root,delta,root+delta);
+	var sequence = mm.NoteSequence.create();
+	sequence.notes.push({ pitch: root + delta, startTime: startTime, endTime: endTime });
+	sequence.totalTime = endTime;
+	return sequence;
 }
 
 playStep5Button = document.getElementById("playStep5Button");
@@ -127,72 +136,37 @@ function harmony() {
 		case '5step':
 			harmonySequence = chordToNotes(root, 'single', 0.0, 8.0);
 			answerSequence = chordToNotes(root, '5step', 0.0, 8.0);
-			answerSingleSequence = {
-				notes: [
-					{ pitch: root + 7, startTime: 0.0, endTime: 2.0 }
-				],
-				totalTime: 2
-			};
+			answerSingleSequence = constructAnswerSequence(root, '5step', 0.0, 2.0);
 			break;
 		case 'Major':
 			harmonySequence = chordToNotes(root, '5step', 0.0, 8.0);
 			answerSequence = chordToNotes(root, '', 0.0, 8.0);
-			answerSingleSequence = {
-				notes: [
-					{ pitch: root + 4, startTime: 0.0, endTime: 2.0 }
-				],
-				totalTime: 2
-			};
+			answerSingleSequence = constructAnswerSequence(root, '', 0.0, 2.0);
 			break;
 		case 'Minor':
 			harmonySequence = chordToNotes(root, '5step', 0.0, 8.0);
 			answerSequence = chordToNotes(root, 'm', 0.0, 8.0);
-			answerSingleSequence = {
-				notes: [
-					{ pitch: root + 3, startTime: 0.0, endTime: 2.0 }
-				],
-				totalTime: 2
-			};
+			answerSingleSequence = constructAnswerSequence(root, 'm', 0.0, 2.0);
 			break;
 		case '7th':
 			harmonySequence = chordToNotes(root, '', 0.0, 8.0);
 			answerSequence = chordToNotes(root, '7', 0.0, 8.0);
-			answerSingleSequence = {
-				notes: [
-					{ pitch: root + 3, startTime: 0.0, endTime: 2.0 }
-				],
-				totalTime: 2
-			};
+			answerSingleSequence = constructAnswerSequence(root, '7', 0.0, 2.0);
 			break;
 		case 'Major 7th':
 			harmonySequence = chordToNotes(root, '', 0.0, 8.0);
 			answerSequence = chordToNotes(root, 'M7', 0.0, 8.0);
-			answerSingleSequence = {
-				notes: [
-					{ pitch: root + 3, startTime: 0.0, endTime: 2.0 }
-				],
-				totalTime: 2
-			};
+			answerSingleSequence = constructAnswerSequence(root, 'M7', 0.0, 2.0);
 			break;
 		case 'Minor 7th':
 			harmonySequence = chordToNotes(root, 'm', 0.0, 8.0);
 			answerSequence = chordToNotes(root, 'm7', 0.0, 8.0);
-			answerSingleSequence = {
-				notes: [
-					{ pitch: root + 3, startTime: 0.0, endTime: 2.0 }
-				],
-				totalTime: 2
-			};
+			answerSingleSequence = constructAnswerSequence(root, 'm7', 0.0, 2.0);
 			break;
 		case 'Minor Major 7th':
 			harmonySequence = chordToNotes(root, 'm', 0.0, 8.0);
 			answerSequence = chordToNotes(root, 'mM7', 0.0, 8.0);
-			answerSingleSequence = {
-				notes: [
-					{ pitch: root + 3, startTime: 0.0, endTime: 2.0 }
-				],
-				totalTime: 2
-			};
+			answerSingleSequence = constructAnswerSequence(root, 'mM7', 0.0, 2.0);
 			break;
 		default:
 			console.log("undefined chord clicked");
@@ -201,12 +175,11 @@ function harmony() {
 	//viz_a = new mm.PianoRollCanvasVisualizer(answerSequence, document.getElementById('canvas_a'));
 	//console.log(harmonySequence);
 	NoPianoHarmonyPracticePlayer.start(harmonySequence);
-
 };
 
 function waterfallHide() {
 	var elements = document.getElementsByClassName('waterfall-notes-container');
-	//console.log(elements);
+	console.log(elements);
 	for (var i = 0; i < elements.length; i++) {
 		elements[i].setAttribute('hidden', true);
 	}
@@ -236,10 +209,8 @@ function checkAnswer() {
 	try {
 		document.getElementById('checkAnswerSection').removeAttribute('hidden');
 		document.getElementById('startSection').setAttribute('hidden', true);
-		config = {
-		};
 		viz_a = new mm.WaterfallSVGVisualizer(answerSequence, document.getElementById('canvas_a'), config);
-		waterfallHide();
+		//waterfallHide();
 	} catch (e) {
 		console.log(e);
 	}
@@ -257,7 +228,7 @@ function answer() {
 	}
 	pressedButtonId = 'playAllNoteButton';
 	viz_a = new mm.WaterfallSVGVisualizer(answerSequence, document.getElementById('canvas_a'), config);
-	waterfallHide();
+	//waterfallHide();
 	PianoHarmonyPracticePlayer.start(answerSequence);
 };
 
@@ -267,8 +238,9 @@ function answerSingle() {
 		PianoHarmonyPracticePlayer.stop();
 	}
 	pressedButtonId = 'playSingleNoteButton';
+	console.log(answerSingleSequence);
 	viz_a = new mm.WaterfallSVGVisualizer(answerSingleSequence, document.getElementById('canvas_a'), config);
-	waterfallHide();
+	//waterfallHide();
 	PianoHarmonyPracticePlayer.start(answerSingleSequence);
 };
 
