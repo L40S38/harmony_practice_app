@@ -145,6 +145,11 @@ svg rect.active {
     transition: 0.5s;
 }
 
+.canvas_a_container{
+    display: flex;
+    justify-content: center;
+}
+
 #canvas_a {
     margin:3rem auto;
 }
