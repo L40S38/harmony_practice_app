@@ -30,22 +30,57 @@
 						<br>
 						<span>まずは完全5度の音を出してみよう</span>
 					</a>
-					<a class="btn" onclick="ready('Major');">メジャー</a>
-					<a class="btn" onclick="ready('Minor');">マイナー</a>
+					<a class="btn" onclick="ready('Major');">
+						メジャー
+						<br>
+						<span>M</span>
+					</a>
+					<a class="btn" onclick="ready('Minor');">
+						マイナー
+						<br>
+						<span>m</span>
+					</a>
 				</div>
 			</div>
 			<div class="button-list-wrapper" id="Intermediate">
 				<h3 class="section-title">中級者向け</h3>
 				<div class="button-list">
-					<a class="btn" onclick="ready('7th');">セブンス</a>
-					<a class="btn" onclick="ready('Major 7th');">メジャー・セブンス</a>
-					<a class="btn" onclick="ready('Minor 7th');">マイナー・セブンス</a>
-					<a class="btn" onclick="ready('Minor Major 7th');">マイナー・メジャー・セブンス</a>
+					<a class="btn" onclick="ready('7th');">
+						セブンス
+						<br>
+						<span>7</span>
+					</a>
+					<a class="btn" onclick="ready('Major 7th');">
+						メジャー・セブンス
+						<br>
+						<span>M7</span>
+					</a>
+					<a class="btn" onclick="ready('Minor 7th');">
+						マイナー・セブンス
+						<br>
+						<span>m7</span>
+					</a>
+					<a class="btn" onclick="ready('Minor Major 7th');">
+						マイナー・メジャー・セブンス
+						<br>
+						<span>mM7</span>
+					</a>
 				</div>
 			</div>
 			<div class="button-list-wrapper" id="Advanced">
 				<h3 class="section-title">上級者向け</h3>
-				<p>comming soon...</p>
+				<div class="button-list">
+					<a class="btn" onclick="ready('sus4')">
+						Suspended 4th
+						<br>
+						<span>sus4</span>
+					</a>
+					<a class="btn" onclick="ready('aug')">
+						Augument
+						<br>
+						<span>aug</span>
+					</a>
+				</div>
 			</div>
 		</div>
 
@@ -112,6 +147,20 @@
 				<div class="column">
 					<h3 class="section-title">マイナー・メジャー・セブンス</h3>
 					<p>マイナー・メジャー・セブンスコードのルートの音（ド）と完全5度の音（ソ）、短3度の音（ミ♭）が鳴るので、長7度の音（シ）を出してみましょう</p>
+				</div>
+				<!--<p>※イヤホン推奨です</p>-->
+			</div>
+			<div id="sus4" hidden>
+				<div class="column">
+					<h3 class="section-title">sus4</h3>
+					<p>ルートの音（ド）と完全5度の音（ソ）が鳴るので、4度の音（ファ）を出してみましょう</p>
+				</div>
+				<!--<p>※イヤホン推奨です</p>-->
+			</div>
+			<div id="aug" hidden>
+				<div class="column">
+					<h3 class="section-title">aug</h3>
+					<p>ルートの音（ド）と増5度の音（ソ#）が鳴るので、長3度の音（ミ）を出してみましょう</p>
 				</div>
 				<!--<p>※イヤホン推奨です</p>-->
 			</div>

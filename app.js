@@ -168,6 +168,16 @@ function harmony() {
 			answerSequence = chordToNotes(root, 'mM7', 0.0, 8.0);
 			answerSingleSequence = constructAnswerSequence(root, 'mM7', 0.0, 2.0);
 			break;
+		case 'sus4':
+			harmonySequence = chordToNotes(root, '5step', 0.0, 8.0);
+			answerSequence = chordToNotes(root, 'sus4', 0.0, 8.0);
+			answerSingleSequence = constructAnswerSequence(root, 'sus4', 0.0, 2.0);
+			break
+		case 'aug':
+			harmonySequence = chordToNotes(root, '5.5step', 0.0, 8.0);
+			answerSequence = chordToNotes(root, 'aug', 0.0, 8.0);
+			answerSingleSequence = constructAnswerSequence(root, 'aug', 0.0, 2.0);
+			break
 		default:
 			console.log("undefined chord clicked");
 			break;
