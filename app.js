@@ -178,6 +178,10 @@ function harmony() {
 			answerSequence = chordToNotes(root, 'aug', 0.0, 8.0);
 			answerSingleSequence = constructAnswerSequence(root, 'aug', 0.0, 2.0);
 			break
+		case 'add9':
+				harmonySequence = chordToNotes(root, '', 0.0, 8.0);
+				answerSequence = chordToNotes(root, 'add9', 0.0, 8.0);
+				answerSingleSequence = constructAnswerSequence(root, 'add9', 0.0, 2.0);
 		default:
 			console.log("undefined chord clicked");
 			break;
